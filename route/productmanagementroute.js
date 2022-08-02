@@ -14,12 +14,12 @@ const { ProductData,
 
 // Calling My MiddleWares
 const {
-    check
-}=require('../middle-wares/FirstMiddleWare'); //Now We Can Use MiddleWare (🚉🚉🚉) Where u Want 
+    UploadProductImage
+}=require('../middle-wares//Upload-Media'); 
 
 // Calling My MiddleWares  
 
-Router.post("/ProductData",check,ProductData); // I Use MiddleWare In this Route
+Router.post("/ProductData",UploadProductImage.single('ProductImage'),ProductData); 
 Router.get("/GetProductData",GetProductData)
 Router.post("/UpDateProductData",UpDateProductData) //We can Use Put But Sometimes We Send Payload So That's Why I  Use Post
 Router.delete("/DeleteProductData",DeleteProductData)

@@ -11,6 +11,9 @@ const ProductSchema = mongoose.Schema({
     ProductName :{ type:String , required:true},
     ProductPrice :{ type:Number , required:true},
     Status :{ type:Number , default:1},
+    ImageUrl: { type: String },
+    ImageName: { type: String },
+    ImageMimeType: { type: String },
     CreateDate :{
         type:String,
         default:`${day}-${month}-${year}-${time}`
