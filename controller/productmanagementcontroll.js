@@ -30,7 +30,11 @@ try {
 
 const GetProductData = async(req,res)=>{
     try {
-        const DoctToGet = await ProductModel.find({},{ProductPrice:0});
+        const DoctToGet = await ProductModel.find(
+            {Status:0},//Condition
+            {ProductPrice:1800});//Projection
+            //option
+            //get(find() or findOne())
         res.json({
             Message:'Document has found',
             Data:true,
@@ -48,11 +52,30 @@ const GetProductData = async(req,res)=>{
 const UpDateProductData = async(req,res)=>{
     try {
         // const DoctToUpDate = await ProductModel.updateMany({Status:1},{Status:0});
-        const DoctToUpDate = await ProductModel.updateMany({ProductPrice:0});
+      const DoctToUpDate = await ProductModel.updateMany({_id:'62e7e0f03d629fe1e90bf0ca'},{ProductPrice:1600});
         res.json({
             Message:'Document has Updated',
             Data:true,
             Result:DoctToUpDate
+        })
+        //(Update() Updatemany())
+    } catch (error) {
+       res.json({
+        Message:error.message,
+        Result:null,
+        Data:false
+       })
+    }
+}
+
+const DeleteProductData = async(req,res)=>{
+    try {
+        
+      const DoctToDelete = await ProductModel.deleteMany({Status:0});
+        res.json({
+            Message:'Document has Deleted',
+            Data:true,
+            Result:DoctToDelete
         })
     } catch (error) {
        res.json({
@@ -68,6 +91,7 @@ const UpDateProductData = async(req,res)=>{
 module.exports={
     ProductData,
     GetProductData,
-    UpDateProductData
+    UpDateProductData,
+    DeleteProductData
 }
 //3rd Step
