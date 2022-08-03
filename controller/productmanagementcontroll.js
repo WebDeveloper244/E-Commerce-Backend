@@ -9,7 +9,7 @@ try {
      const DocToCreate = new ProductModel({
         ProductName,
         ProductPrice,
-        ImageUrl: `/assets/Product/${req.file.filename}`,//req.file.filename
+        ImageUrl: `/assets/Product/${req.file.filename}`,
         ImageName: req.file.originalname,
         ImageMimeType: req.file.mimetype,
         
