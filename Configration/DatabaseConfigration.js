@@ -4,10 +4,12 @@ mongoose.connect('mongodb+srv://ecom-123:ecom-123@e-commerce.pgkqfrl.mongodb.net
     if(!error){
 console.log(`\nMongoDb connected SucessFully at MongoAtlas WithDatabBase NameHumanoidCrm\n`);
 console.log(`\nYour ap has following Dependencies\n`);
-for(let dependencies in Package.dependencies){
+for(let dependencies in Package.dependencies){      //loop in object keys so use for in loop
     console.log(dependencies);
 }
 
     }
     else {console.log(`Error:Not Connected to the MongoDb` + error)}
 })
+
+// useNewUrlParser:true (protocols or database rules ) allow to convert BSON (Binary-javascript-object-notation) (0-1 form) Data to Json

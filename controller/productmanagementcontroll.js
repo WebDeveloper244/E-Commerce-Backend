@@ -1,25 +1,25 @@
 
-const ProductModel = require('../models/ProductManagementmodel')
+const ProductModel = require('../models/ProductManagementmodel')   
 const ProductData = async(req , res)=>{
 try {
 
-    const {ProductName,ProductPrice} = req.body;
-     console.log(req.body); //check frontend Data
+    const {ProductName,ProductPrice} = req.body;  // after creating simple api next is destruct two properties ⤵️
+     console.log(req.body); //check frontend Data   
 
      const DocToCreate = new ProductModel({
-        ProductName,
+        ProductName,                                                //Now create query Before Query import ProductModel
         ProductPrice,
         ImageUrl: `/assets/Product/${req.file.filename}`,
         ImageName: req.file.originalname,
         ImageMimeType: req.file.mimetype,
         
     })
-    const DocToSave = await DocToCreate.save();
+    const DocToSave = await DocToCreate.save();                    // and save
     //Hey Please Save this Data to My DataBase //IOBlocking await
     res.json({
         Message:`You have reached at the end point of API now go to hell(🔥🔥🔥🔥)`,
         //Body:req.body
-        // Body:`${ProductName} \n ${ProductPrice}`
+        // Body:`${ProductName} \n ${ProductPrice}`                 (and shoe here)                        ◀️◀️◀️◀️
         Body:DocToSave
     });
 } catch (error) {

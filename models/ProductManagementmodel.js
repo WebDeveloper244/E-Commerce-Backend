@@ -8,7 +8,7 @@ const time = today.getTime();
 
 //creating Schema (metaData/Information)
 const ProductSchema = mongoose.Schema({
-    ProductName :{ type:String , required:true},
+    ProductName :{ type:String , required:true},  //mongo db create indexses
     ProductPrice :{ type:Number , required:true},
     Status :{ type:Number , default:1},
     ImageUrl: { type: String },

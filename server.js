@@ -64,3 +64,16 @@ app.listen(Port,()=>{
 // yahan tak http//localhost:2400=>(slag) ka matlab hay
 // 1st step
 
+
+
+// (1st-Step) First of All Create Simple API server.js to controller  
+// (2st-Step) now install Mongoose first(1st) work of Mongoose-Driver is Connection so create configration folder and make DatabaseConfig.js second(2nd) Work 
+//  mongoose.schema ((is a function only take one argument that is object)) so create model so make model folder and then make product-model.js file now crete model.
+// and third step is mongoose.model it create model in database it takes 2 arguments 1st argument is create collections and 2nd arguments is variable
+// (3rd-Step) First of All Create Simple API server.js to controller  
+// (1st-Step) First of All Create Simple API server.js to controller  
+// (1st-Step) First of All Create Simple API server.js to controller  
+
+
+// (2nd-step knowldge 1st-arguments) sql create tables and rows 
+// non-sql create collections on the place of table and create object on the place of rows
