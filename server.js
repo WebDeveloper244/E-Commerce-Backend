@@ -2,6 +2,9 @@ const express = require("express");// Only ImPort Express frameWork
 const cors = require("cors");
 const app = express();//All the Classes of Express FrameWork in App now you can get any class with (.) bracket is use because its a class
 const Port = process.env.Port||8080;
+
+const ApplicationConfig = require ('./Configration/LoadMyConfig-Env-file')
+
 const ResponseOfMyDataBaseConnection = require("./Configration/DatabaseConfigration");
 //Block Dependencies
 
