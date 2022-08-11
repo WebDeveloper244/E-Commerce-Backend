@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(express.text());
 app.use(express.raw());
 app.use(cors());
-app.use('/assets',express.static('assets'));
+app.use('/assets',express.static('assets')); //Route in image path
 //Block Start Initialize the app
 
 
@@ -66,13 +66,30 @@ app.listen(Port,()=>{
 
 
 
-// (1st-Step) First of All Create Simple API server.js to controller  
+// (1st-Step) First of All Create Simple API server.js to controller  (create api)
 // (2st-Step) now install Mongoose first(1st) work of Mongoose-Driver is Connection so create configration folder and make DatabaseConfig.js second(2nd) Work 
 //  mongoose.schema ((is a function only take one argument that is object)) so create model so make model folder and then make product-model.js file now crete model.
-// and third step is mongoose.model it create model in database it takes 2 arguments 1st argument is create collections and 2nd arguments is variable
-// (3rd-Step) First of All Create Simple API server.js to controller  
-// (1st-Step) First of All Create Simple API server.js to controller  
-// (1st-Step) First of All Create Simple API server.js to controller  
+// and third step is mongoose.model it create model in database it takes 2 arguments 1st argument is create collections and 2nd arguments is variable and import 
+// ProductSchema in controller.js
+// (3rd-Step) create middleWare Folder and add (Allow-Headers-Section in server.js and create function for display 404-error when url not found) 
+// (4th-Step) create get api in product-management-controller.js and create update api and then create  delete api
+// (5th-Step) create first middleware then import in product-management-router and set in which api u want and now create middle-ware for image and install 
+// multer and import in upload-media after creating middle-ware now add ImageUrl: { type: String },ImageName: { type: String },   ImageMimeType: { type: String },in product-
+// management-model now add in controller.js and then import in router.js and then add in post api with.single(Image==>exact same argument name in formData) and then
+// intialize app.use('/assets',express.static('assets')) in server.js
+    
+ 
+
+
+
+
+
+
+
+
+
+
+
 
 
 // (2nd-step knowldge 1st-arguments) sql create tables and rows 

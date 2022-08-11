@@ -36,10 +36,10 @@ let UploadProductImage = multer({
             }
             cb(null, path);
         },
-        filename: (req, file, cb) => {
+        filename: (req, file, cb) => {  // cb stand for callback
             const md5sum = hashFunc(file.originalname);   //file.originalname in req.file
       //originalname is the uploaded file's name with date iso String
-      let ext = file.mimetype.split('/')[1];   //asfsfsd.jpg ko split karo r 1index walaa show karo
+      let ext = file.mimetype.split('/')[1];   //asfsfsd.jpg ko split karo r index walaa show karo
       // Fix svg+xml bug
       if (ext.includes('svg')) {
         ext = 'svg';
