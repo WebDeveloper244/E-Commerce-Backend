@@ -10,10 +10,12 @@ const time = today.getTime();
 const ProductSchema = mongoose.Schema({
     ProductName :{ type:String , required:true},  //mongo db create indexses
     ProductPrice :{ type:Number , required:true},
+    ProductQuantity:{type:Number, required:true, default:0},
     Status :{ type:Number , default:1},
-    ImageUrl: { type: String },
-    ImageName: { type: String },
-    ImageMimeType: { type: String },
+    ProductImageUrl: { type: String },
+    ProductImageName: { type: String },
+    ProductImageMimeType: { type: String },
+
     CreateDate :{
         type:String,
         default:`${day}-${month}-${year}-${time}`

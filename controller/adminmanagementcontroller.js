@@ -1,12 +1,12 @@
-const _AdminManagementModel = require('../models/AdminManagementModel');
+const _AdminManagementModel = require('../models/AdminManagementModel');  //import from admin-model
 
-const jwt = require('jsonwebtoken');
+const jwt = require('jsonwebtoken');  
 const bcrypt = require('bcrypt');
 
-const AdminRegister= async(req,res) => {
+const AdminRegister= async(req,res) => {                                                        //create AdminRegister 
     try {
-        const {FirstName, LastName, Email, Password} = req.body;
-        const _GetAdminUserLength = _AdminManagementModel.find();
+        const {FirstName, LastName, Email, Password} = req.body;                               // destruct (FirstName, LastName, Email, Password) from req.body
+        const _GetAdminUserLength = _AdminManagementModel.find();                              // find _AdminManagementModel 
         if (_GetAdminUserLength.length >= 1) {
             res.json({
                 Message:`Admin Regesteration is Constraint`,
@@ -46,18 +46,17 @@ const AdminLogin = async (req,res) => {
             })
         }
 
-        const _Result = await bcrypt.compare(_Password, _AdminToAuthenticate.Password);
+        const _Result = await bcrypt.compare(_Password, _AdminToAuthenticate.Password);  // req.body.password  and AdminToAuthenticate.Password <==_AdminManagementModel.password
         if (!_Result) {
             return res.json({
                 Message: 'Authentication Failed Either Incorrect Password or Email',
                 Data: false,
                 Result: null
             })
-        }
-
-        const _Token = jwt.sign(
+        }                                             // when Password and email matched then go to next step 
+        const _Token = jwt.sign(                     // jwt.sign take three arguments first payload/body second second secreate-key third expire-time
             {
-                Email: _AdminToAuthenticate.Email,
+                Email: _AdminToAuthenticate.Email,   
                 UserId: _AdminToAuthenticate._id
             },
             'UserLogin',
@@ -81,3 +80,7 @@ const AdminLogin = async (req,res) => {
         })
     }
 }
+
+// userlogin and regester is (authentication) 
+// kis user ko kiaa access milni chahiyaa (authorization)
+// this is called roll system

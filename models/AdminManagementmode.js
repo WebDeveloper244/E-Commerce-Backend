@@ -1,7 +1,7 @@
 //Dependencies
 const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
-const SaltRounds = process.env.SALT_ROUND;
+const bcrypt = require('bcrypt');   //secure-Password
+const SaltRounds = process.env.SALT_ROUND; //hashes and convert mix strings
 
 // Date
 const today = new Date();
@@ -22,15 +22,15 @@ const AdminRegisterSchema = mongoose.Schema({
         type: String,
         default: `${year}-${month}-${day}-${time}`,
     }
-},{timestamps:true})
+},{timestamps:true}) //find last login
 
 
-AdminRegisterSchema.pre('save', async function (next) {
+AdminRegisterSchema.pre('save', async function (next) { // (pre) means Creating Before AdminRegisterSchema provided by mongoose 1st argument is save inbuilt
     try {
-        const Salt = await bcrypt.genSalt(SaltRounds);
-        const HashedPassword = await bcrypt.hash(this.Password, Salt);
-        this.Password = HashedPassword;
-        this.SaltString = Salt;
+        const Salt = await bcrypt.genSalt(SaltRounds); //bcrypt SaltRounds
+        const HashedPassword = await bcrypt.hash(this.Password, Salt); //bcrypt.hash take two arguments Password and Salt and then mix up and create 
+        this.Password = HashedPassword; // now this.Password = HashedPassword
+        this.SaltString = Salt;         // and then this.SaltString = Salt
         next();
     } catch (error) {
         return res.json({

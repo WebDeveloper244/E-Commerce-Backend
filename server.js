@@ -67,7 +67,11 @@ app.listen(Port,()=>{
 
 
 // (1st-Step) First of All Create Simple API server.js to controller  (create api)
-// (2st-Step) now install Mongoose first(1st) work of Mongoose-Driver is Connection so create configration folder and make DatabaseConfig.js second(2nd) Work 
+// (2st-Step) now install Mongoose first(1st) work of Mongoose-Driver is Connection so create configration folder and make DatabaseConfig.js 
+
+//****************** Product-Management */
+
+//second(2nd) Work 
 //  mongoose.schema ((is a function only take one argument that is object)) so create model so make model folder and then make product-model.js file now crete model.
 // and third step is mongoose.model it create model in database it takes 2 arguments 1st argument is create collections and 2nd arguments is variable and import 
 // ProductSchema in controller.js
@@ -78,6 +82,12 @@ app.listen(Port,()=>{
 // management-model now add in controller.js and then import in router.js and then add in post api with.single(Image==>exact same argument name in formData) and then
 // intialize app.use('/assets',express.static('assets')) in server.js
     
+//***************** Admin-Mangement */
+
+//6th step create Admin-Schema in Model install bcrypt  bcrypt.gnsalt  bcrypt.hash
+//7th step now import in admin-controller.js. install jwt and require bcrypt for compare login password bcrypt.compare
+//8th step create dev,prod,test file in dev.env file create port and connect-mongo uri and initialize salt value.
+//install dotenv package and create load my configration file and then call in server.js
  
 
 

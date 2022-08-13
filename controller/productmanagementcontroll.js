@@ -9,9 +9,10 @@ try {
      const DocToCreate = new ProductModel({
         ProductName,                                                //Now create query Before Query import ProductModel
         ProductPrice,
-        ImageUrl: `/assets/Product/${req.file.filename}`,
-        ImageName: req.file.originalname,
-        ImageMimeType: req.file.mimetype,
+        ProductQuantity,
+        ProductImageUrl: `/assets/ProductImages/${req.file.filename}`,
+        ProductImageName: req.file.originalname,
+        ProductImageMimeType: req.file.mimetype,
         
     })
     const DocToSave = await DocToCreate.save();                    // and save
