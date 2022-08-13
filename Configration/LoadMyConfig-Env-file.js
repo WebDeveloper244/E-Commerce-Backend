@@ -5,15 +5,15 @@ const dotenv = require('dotenv');
 
 let MyEnviorment={};
 if(process.env.NODE_ENV === 'testing'){
-    MyEnviorment = dotenv.config({path:`${__dirname}/../Application-Configuration-Test.env`});
+    MyEnviorment = dotenv.config({path:`${__dirname}/../Application-Configration-Test.env`});
 }
 
 if(process.env.NODE_ENV === 'development'){
-     MyEnviorment = dotenv.config({path:`${__dirname}/../Application-Configuration-Dev.env`});
+     MyEnviorment = dotenv.config({path:`${__dirname}/../Application-Configration-Dev.env`});
 }
 
 if(process.env.NODE_ENV === 'production'){
-     MyEnviorment = dotenv.config({path:`${__dirname}/../Application-Configuration-Prod.env`});
+     MyEnviorment = dotenv.config({path:`${__dirname}/../Application-Configration-Prod.env`});
 }
 
 console.log(MyEnviorment);

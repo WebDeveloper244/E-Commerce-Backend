@@ -1,6 +1,6 @@
 const Package = require("../package.json");
 const mongoose= require("mongoose");
-mongoose.connect('mongodb+srv://ecom-123:ecom-123@e-commerce.pgkqfrl.mongodb.net/E-Commerce?retryWrites=true&w=majority',{useNewUrlParser:true,useUnifiedTopology:true},(error,connection)=>{
+mongoose.connect(process.env.MONGO_URI,{useNewUrlParser:true,useUnifiedTopology:true},(error,connection)=>{  
     if(!error){
 console.log(`\nMongoDb connected SucessFully at MongoAtlas WithDatabBase NameHumanoidCrm\n`);
 console.log(`\nYour ap has following Dependencies\n`);
@@ -13,3 +13,6 @@ for(let dependencies in Package.dependencies){      //loop in object keys so use
 })
 
 // useNewUrlParser:true (protocols or database rules ) allow to convert BSON (Binary-javascript-object-notation) (0-1 form) Data to Json
+
+//mongoose.connect('mongodb+srv://ecom-123:ecom-123@e-commerce.pgkqfrl.mongodb.net/E-Commerce?retryWrites=true&w=majority',
+//{useNewUrlParser:true,useUnifiedTopology:true},(error,connection)=>{ 1st step without dev.env 

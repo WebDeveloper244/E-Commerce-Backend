@@ -2,7 +2,7 @@ const express = require("express");// Only ImPort Express frameWork
 const cors = require("cors");
 const app = express();//All the Classes of Express FrameWork in App now you can get any class with (.) bracket is use because its a class
 const Port = process.env.Port||8080;
-
+// const path = require('path');
 const ApplicationConfig = require ('./Configration/LoadMyConfig-Env-file')
 
 const ResponseOfMyDataBaseConnection = require("./Configration/DatabaseConfigration");
@@ -60,6 +60,7 @@ app.use((error, req, res, next) => {
 
 app.listen(Port,()=>{
     console.log(`Your Server has been launched (🚀🚀🚀🚀) ${Port}`);
+    
 });
 // yahan tak http//localhost:2400=>(slag) ka matlab hay
 // 1st step
@@ -85,9 +86,10 @@ app.listen(Port,()=>{
 //***************** Admin-Mangement */
 
 //6th step create Admin-Schema in Model install bcrypt  bcrypt.gnsalt  bcrypt.hash
-//7th step now import in admin-controller.js. install jwt and require bcrypt for compare login password bcrypt.compare
-//8th step create dev,prod,test file in dev.env file create port and connect-mongo uri and initialize salt value.
+//7th step create dev,prod,test file in dev.env file create port and connect-mongo uri and initialize salt value.
 //install dotenv package and create load my configration file and then call in server.js
+//8th step now import in admin-controller.js. install jwt and require bcrypt for compare login password bcrypt.compare
+
  
 
 
