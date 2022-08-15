@@ -2,6 +2,7 @@ const express = require ('express');
 const Router = express.Router();
 
 // Accquring MiddleWares
+const {AuthorizeAdmin} = require ('../middle-wares/AdminAuthorization')
 // Accquring MiddleWares
 
 // Accquring Controllers
@@ -9,7 +10,7 @@ const { AdminRegister , AdminLogin} = require ('../controller/adminmanagementcon
 // Accquring Controllers
 
 // Define Routers
-Router.post('/AdminRegister',AdminRegister)
+Router.post('/AdminRegister',AuthorizeAdmin,AdminRegister) // two layers of security login ma token 2nd token expire
 Router.post('/AdminLogin',AdminLogin)
 // Define Routers
 

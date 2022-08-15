@@ -1,7 +1,7 @@
 //Dependencies
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');   //secure-Password
-const SaltRounds = process.env.SALT_ROUND; //hashes and convert mix strings
+const SaltRounds = parseInt (process.env.SALT_ROUND); //hashes and convert mix strings
 
 // Date
 const today = new Date();
@@ -45,4 +45,4 @@ AdminRegisterSchema.pre('save', async function (next) { // (pre) means Creating 
 //End Block Schema Creating
 
 //Exporting The Schema
-module.exports = mongoose.model('AdminRegisterCollection', AdminRegisterSchema);
+module.exports = mongoose.model('AdminRegisterCollection',AdminRegisterSchema);

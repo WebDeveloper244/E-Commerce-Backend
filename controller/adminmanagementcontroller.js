@@ -1,4 +1,4 @@
-const _AdminManagementModel = require('../models/AdminManagementModel');  //import from admin-model
+const _AdminManagementModel = require('../models/AdminManagementmodel');  //import from admin-model
 
 const jwt = require('jsonwebtoken');  
 const bcrypt = require('bcrypt');
@@ -7,7 +7,7 @@ const MyKey = process.env.SECRET_KEY;
 const AdminRegister= async(req,res) => {                                                        //create AdminRegister 
     try {
         const {FirstName, LastName, Email, Password} = req.body;                               // destruct (FirstName, LastName, Email, Password) from req.body
-        const _GetAdminUserLength = await_AdminManagementModel.find();                              // find _AdminManagementModel 
+        const _GetAdminUserLength = await _AdminManagementModel.find();                              // find _AdminManagementModel 
         if (_GetAdminUserLength.length >= 1) {
             res.json({
                 Message:`Admin Regesteration is Constraint`,
@@ -19,7 +19,7 @@ const AdminRegister= async(req,res) => {                                        
                 FirstName,
                 LastName ,
                 Email,
-                Password:Password
+                Password
                             
             });
             await _RegisterAdmin.save();
@@ -38,7 +38,7 @@ const AdminLogin = async (req,res) => {
     try {
         _Email = req.body.Email;
         _Password = req.body.Password;
-        let _AdminToAuthenticate = await _AdminManagementModel.findOne({ Email: _Email });
+        let _AdminToAuthenticate = await _AdminManagementModel.findOne({ Email: _Email }); //_Email ==> req.body
         if (_AdminToAuthenticate === null) {
             return res.json({
                 Message: 'Authentication Failed Either Incorrect Password or Email',
