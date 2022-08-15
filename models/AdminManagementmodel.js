@@ -22,7 +22,7 @@ const AdminRegisterSchema = mongoose.Schema({
         type: String,
         default: `${year}-${month}-${day}-${time}`,
     }
-},{timestamps:true}) //find last login
+},{timestamps:true}) //find last login updated time
 
 
 AdminRegisterSchema.pre('save', async function (next) { // (pre) means Creating Before AdminRegisterSchema provided by mongoose 1st argument is save inbuilt
@@ -33,11 +33,11 @@ AdminRegisterSchema.pre('save', async function (next) { // (pre) means Creating 
         this.SaltString = Salt;         // and then this.SaltString = Salt
         next();
     } catch (error) {
-        return res.json({
+        return ({
             Message: error.message,
             Data: false,
             Result: null
-        })
+        }) 
     }
 });
 

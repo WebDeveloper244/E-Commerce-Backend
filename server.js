@@ -35,9 +35,11 @@ app.all('*', (req, res, next) => {
 
 //Now calling (📱📱) My Routes
 const ProductManagementRouter = require("./route/productmanagementroute");
+const Adminmanagementcontroller = require ('./route/AdminmanagementRoute')
 
 /*******************************Using Routes*************/
 app.use("/ProductManagement",ProductManagementRouter);
+app.use('/Adminmanagementcontroller',Adminmanagementcontroller)
 /*******************************Using Routes*************/
 
 
@@ -89,6 +91,7 @@ app.listen(Port,()=>{
 //7th step create dev,prod,test file in dev.env file create port and connect-mongo uri and initialize salt value.
 //install dotenv package and create load my configration file and then call in server.js
 //8th step now import in admin-controller.js. install jwt and require bcrypt for compare login password bcrypt.compare
+//9th step Calling Controller in (Admin-Management-Route) and then defining routes now go to server.js calling (📱📱) My Routes
 
  
 

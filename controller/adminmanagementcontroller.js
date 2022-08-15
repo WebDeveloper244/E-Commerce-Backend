@@ -2,11 +2,12 @@ const _AdminManagementModel = require('../models/AdminManagementModel');  //impo
 
 const jwt = require('jsonwebtoken');  
 const bcrypt = require('bcrypt');
+const MyKey = process.env.SECRET_KEY;
 
 const AdminRegister= async(req,res) => {                                                        //create AdminRegister 
     try {
         const {FirstName, LastName, Email, Password} = req.body;                               // destruct (FirstName, LastName, Email, Password) from req.body
-        const _GetAdminUserLength = _AdminManagementModel.find();                              // find _AdminManagementModel 
+        const _GetAdminUserLength = await_AdminManagementModel.find();                              // find _AdminManagementModel 
         if (_GetAdminUserLength.length >= 1) {
             res.json({
                 Message:`Admin Regesteration is Constraint`,
@@ -15,11 +16,11 @@ const AdminRegister= async(req,res) => {                                        
             })
         } else {
             const _RegisterAdmin = new _AdminManagementModel({
-                FirstName:FirstName,
-                LastName:LastName,
-                Email:Email,
-                Password:Password,
-                RealPassword:Password            
+                FirstName,
+                LastName ,
+                Email,
+                Password:Password
+                            
             });
             await _RegisterAdmin.save();
             res.json({
@@ -46,7 +47,7 @@ const AdminLogin = async (req,res) => {
             })
         }
 
-        const _Result = await bcrypt.compare(_Password, _AdminToAuthenticate.Password);  // req.body.password  and AdminToAuthenticate.Password <==_AdminManagementModel.password
+        const _Result = await bcrypt.compare(_Password, _AdminToAuthenticate.Password);  // req.body.password (front-end Form) and AdminToAuthenticate.Password <==_AdminManagementModel.password
         if (!_Result) {
             return res.json({
                 Message: 'Authentication Failed Either Incorrect Password or Email',
@@ -54,13 +55,13 @@ const AdminLogin = async (req,res) => {
                 Result: null
             })
         }                                             // when Password and email matched then go to next step 
-        const _Token = jwt.sign(                     // jwt.sign take three arguments first payload/body second second secreate-key third expire-time
+        const _Token = jwt.sign(                     // jwt.sign take three arguments first payload/body second secreate-key third expire-time
             {
                 Email: _AdminToAuthenticate.Email,   
-                UserId: _AdminToAuthenticate._id
+                SaltString: _AdminToAuthenticate.SaltString // payload/body
             },
-            'UserLogin',
-            { expiresIn: '1h' }
+            'MyKey',                                       // secreate-key 
+            { expiresIn: '1h' }                           //  expire-time
         )
 
         return res.json({
@@ -80,6 +81,8 @@ const AdminLogin = async (req,res) => {
         })
     }
 }
+
+module.exports={AdminRegister,AdminLogin}
 
 // userlogin and regester is (authentication) 
 // kis user ko kiaa access milni chahiyaa (authorization)
