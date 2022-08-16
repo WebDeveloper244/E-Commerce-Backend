@@ -35,11 +35,12 @@ app.all('*', (req, res, next) => {
 
 //Now calling (📱📱) My Routes
 const ProductManagementRouter = require("./route/productmanagementroute");
-const AdminmanagementRouter = require ('./route/AdminmanagementRoute')
-
+const AdminmanagementRouter = require ('./route/AdminmanagementRoute');
+const PaymentManagement = require('./route/PaymentManagementRoute');
 /*******************************Using Routes*************/
 app.use("/ProductManagement",ProductManagementRouter);
-app.use('/AdminmanagementRouter',AdminmanagementRouter)
+app.use('/AdminmanagementRouter',AdminmanagementRouter);
+app.use('/PaymentManagement',PaymentManagement)
 /*******************************Using Routes*************/
 
 
@@ -72,7 +73,7 @@ app.listen(Port,()=>{
 // (1st-Step) First of All Create Simple API server.js to controller  (create api)
 // (2st-Step) now install Mongoose first(1st) work of Mongoose-Driver is Connection so create configration folder and make DatabaseConfig.js 
 
-//****************** Product-Management */
+//******************* Product-Management */
 
 //second(2nd) Work 
 //  mongoose.schema ((is a function only take one argument that is object)) so create model so make model folder and then make product-model.js file now crete model.
@@ -85,7 +86,7 @@ app.listen(Port,()=>{
 // management-model now add in controller.js and then import in router.js and then add in post api with.single(Image==>exact same argument name in formData) and then
 // intialize app.use('/assets',express.static('assets')) in server.js
     
-//***************** Admin-Mangement */
+//************************ Admin-Mangement */
 
 //6th step create Admin-Schema in Model install bcrypt  bcrypt.gnsalt  bcrypt.hash
 //7th step create dev,prod,test file in dev.env file create port and connect-mongo uri and initialize salt value.
@@ -94,8 +95,10 @@ app.listen(Port,()=>{
 //9th step Calling Controller in (Admin-Management-Route) and then defining routes now go to server.js calling (📱📱) My Routes
 
  
+//***************** Stripe-Payment-Mangement */
 
-
+//1st step install npm i stripe and then create dummy account in stripe in (devolper-mode) and then create controller (Pay-With-Stripe)
+//and then create (route) and call in server.js
 
 
 
