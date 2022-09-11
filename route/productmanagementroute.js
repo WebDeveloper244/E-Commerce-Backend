@@ -19,7 +19,7 @@ const {
 
 // Calling My MiddleWares  
 
-Router.post("/ProductData",UploadProductImage.single('ProductImage'),ProductData);                                                   //create
+Router.post("/ProductData",UploadProductImage.array('ProductImage',10),ProductData);                                                   //create
 Router.get("/GetProductData",GetProductData)                                                                                        //read
 Router.post("/UpDateProductData",UpDateProductData) //We can Use Put But Sometimes We Send Payload So That's Why I  Use Post        //update
 Router.delete("/DeleteProductData",DeleteProductData)                                                                               //delete

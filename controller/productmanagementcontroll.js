@@ -3,7 +3,7 @@ const ProductModel = require('../models/ProductManagementmodel')
 const ProductData = async(req , res)=>{
 try {
 
-    const {ProductName,ProductPrice} = req.body;  // after creating simple api next is destruct two properties ⤵️
+    const {ProductName,ProductPrice,ProductQuantity} = req.body;  // after creating simple api next is destruct two properties ⤵️
      console.log(req.body); //check frontend Data   
 
      const DocToCreate = new ProductModel({
@@ -20,9 +20,14 @@ try {
     res.json({
         Message:`You have reached at the end point of API now go to hell(🔥🔥🔥🔥)`,
         //Body:req.body
-        // Body:`${ProductName} \n ${ProductPrice}`                 (and shoe here)                        ◀️◀️◀️◀️
+        // Body:`${ProductName} \n ${ProductPrice}`                 (and shoe here)                        ◀️◀️◀️◀️                   ◀️◀️◀️◀️           //line n 6 first check this and then (DocToCreate)
         Body:DocToSave
     });
+    // res.json({
+    //     Message:'You have reached the end-point',
+    //     Body:req.body,
+    //     Data:true
+    // })
 } catch (error) {
     res.json({
         Message:error.message,
