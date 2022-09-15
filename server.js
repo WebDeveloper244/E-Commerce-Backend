@@ -99,6 +99,21 @@ app.listen(Port,()=>{
 
 //1st step install npm i stripe and then create dummy account in stripe in (devolper-mode) and then create controller (Pay-With-Stripe)
 //and then create (route) and call in server.js
+ 
+//***************** Stripe-Payment-Mangement */
+
+//1st step install npm i stripe and then create dummy account in stripe in (devolper-mode) and then create controller (Pay-With-Stripe)
+//and then create (route) and call in server.js
+ 
+//***************** Stripe-Payment-Mangement */
+
+//1st step install npm i stripe and then create dummy account in stripe in (devolper-mode) and then create controller (Pay-With-Stripe)
+//and then create (route) and call in server.js
+ 
+//***************** Stripe-Payment-Mangement */
+
+//1st step install npm i stripe and then create dummy account in stripe in (devolper-mode) and then create controller (Pay-With-Stripe)
+//and then create (route) and call in server.js
 
 
 
