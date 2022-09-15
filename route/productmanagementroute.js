@@ -5,8 +5,8 @@ const Router = express.Router();//express function router call with (.)
 // Calling The Controller 4th step
 const { ProductData,
       GetProductData,
-      UpDateProductData,
-      DeleteProductData
+      UpDateProductData,                                                          // Testing-Data-Base is (Data-Base) Name and then Collection is (productCollections) and in this productCollections Documents
+      DeleteProductData                                                             // Which is actually called (Objects) and in sql Testing-Data-Base is (Data-Base) and  (productCollections) is table and then (rows)
 }= require("../controller/productmanagementcontroll")
 
 // Calling The Controller 4th step

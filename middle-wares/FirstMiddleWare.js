@@ -1,6 +1,6 @@
 const check = (req, res, next)=>{
     try {
-        if(req.body !== {}){
+        if(req.body !=={}){
             next(); // At a time one response can snd/access ◀️◀️◀️◀️ this one 
         }
         else{
