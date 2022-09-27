@@ -8,7 +8,7 @@ const AdminRegister= async(req,res) => {                                        
     try {
         const {FirstName, LastName, Email, Password} = req.body;                               // destruct (FirstName, LastName, Email, Password) from req.body
         const _GetAdminUserLength = await _AdminManagementModel.find();                              // find _AdminManagementModel 
-        if (_GetAdminUserLength.length >= 1) {
+        if (_GetAdminUserLength.length >= 2) {
             res.json({
                 Message:`Admin Regesteration is Constraint`,
                 Status:null,
