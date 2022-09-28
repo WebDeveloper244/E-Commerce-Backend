@@ -60,7 +60,7 @@ const AdminLogin = async (req,res) => {
                 Email: _AdminToAuthenticate.Email,   
                 SaltString: _AdminToAuthenticate.SaltString // payload/body
             },
-            'MyKey',                                       // secreate-key 
+            MyKey,                                       // secreate-key 
             { expiresIn: '1h' }                           //  expire-time
         )
 
