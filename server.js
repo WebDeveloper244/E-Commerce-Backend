@@ -93,6 +93,7 @@ app.listen(Port,()=>{
 //install dotenv package and create load my configration file and then call in server.js
 //8th step now import in admin-controller.js. install jwt and require bcrypt for compare login password bcrypt.compare
 //9th step Calling Controller in (Admin-Management-Route) and then defining routes now go to server.js calling (📱📱) My Routes
+// 10th first create admin register and then create login and then go to admin register and set middleware and then 
 
  
 //***************** Stripe-Payment-Mangement */

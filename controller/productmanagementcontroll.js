@@ -23,11 +23,15 @@ try {
         // Body:`${ProductName} \n ${ProductPrice}`                 (and shoe here)                        ◀️◀️◀️◀️                   ◀️◀️◀️◀️           //line n 6 first check this and then (DocToCreate)
         Body:DocToSave
     });
+
+// ********** Checking for forntend response **************//
     // res.json({
     //     Message:'You have reached the end-point',
     //     Body:req.body,
     //     Data:true
     // })
+// ********** Checking for forntend response **************//
+
 } catch (error) {
     res.json({
         Message:error.message,
