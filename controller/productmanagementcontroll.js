@@ -3,34 +3,49 @@ const ProductModel = require('../models/ProductManagementmodel')
 const ProductData = async(req , res)=>{
 try {
 
-    const {ProductName,ProductPrice,ProductQuantity} = req.body;  // after creating simple api next is destruct two properties ⤵️
-     console.log(req.body); //check frontend Data   
+    // ******************************************* When Create middle-Ware for backend then use this ( 1st step ) ******************************************//
 
-     const DocToCreate = new ProductModel({
-        ProductName,                                                //Now create query Before Query import ProductModel
-        ProductPrice,
-        ProductQuantity,
-        ProductImageUrl: `/assets/ProductImages/${req.file.filename}`,
-        ProductImageName: req.file.originalname,
-        ProductImageMimeType: req.file.mimetype,
+    // const {ProductName,ProductPrice,ProductQuantity} = req.body;  // after creating simple api next is destruct two properties ⤵️
+    //  console.log(req.body);  //check frontend Data   
+
+    //  const DocToCreate = new ProductModel({
+    //     ProductName,                                                //Now create query Before Query import ProductModel
+    //     ProductPrice,
+    //     ProductQuantity,
+    //     ProductImageUrl: `/assets/ProductImages/${req.file.filename}`,
+    //     ProductImageName: req.file.originalname,
+    //     ProductImageMimeType: req.file.mimetype,
         
-    })
-    const DocToSave = await DocToCreate.save();                    // and save
+    // })
+    
+    // const DocToSave = await DocToCreate.save();                    // and save
+    
     //Hey Please Save this Data to My DataBase //IOBlocking await
-    res.json({
-        Message:`You have reached at the end point of API now go to hell(🔥🔥🔥🔥)`,
-        //Body:req.body
-        // Body:`${ProductName} \n ${ProductPrice}`                 (and shoe here)                        ◀️◀️◀️◀️                   ◀️◀️◀️◀️           //line n 6 first check this and then (DocToCreate)
-        Body:DocToSave
-    });
+    // res.json({
+    //     // Message:`You have reached at the end point of API now go to hell(🔥🔥🔥🔥)`, 1st step
+    //     //Body:req.body
+    //     // Body:`${ProductName} \n ${ProductPrice}`                 (and shoe here)                        ◀️◀️◀️◀️                   ◀️◀️◀️◀️           //line n 6 first check this and then (DocToCreate)
+    //     Message:`Data Saved Successfully`,
+    //     Body:DocToSave,
+    //     Data:True
+    // });
+
+    // ******************************************* When Create middle-Ware for backend then use this ******************************************//
+
 
 // ********** Checking for forntend response **************//
-    // res.json({
-    //     Message:'You have reached the end-point',
-    //     Body:req.body,
-    //     Data:true
-    // })
+    res.json({
+        Message:'You have reached the end-point Salman',          // when u get data from frontend then use this....
+        Body:req.body,
+        Data:true
+    })
 // ********** Checking for forntend response **************//
+
+
+// for ( 1st step ) ▶️  u cannot use  filelist because frontend images are in req.filelist multer cannot understand filelist it understand only array
+// so we can convert filelist in array 
+
+
 
 } catch (error) {
     res.json({
