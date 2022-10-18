@@ -1,5 +1,5 @@
 
-const ProductModel = require('../models/ProductManagementmodel')   
+const ProductModel = require('../models/ProductManagementmodel');   
 const ProductData = async(req , res)=>{
 try {
 
@@ -34,20 +34,62 @@ try {
 
 
 // ********** Checking for forntend response **************//
-    res.json({
-        Message:'You have reached the end-point Salman',          // when u get data from frontend then use this....
-        Body:req.body,
-        Data:true
-    })
+// console.log(req.files);
+// console.log(req);
+
+    // res.json({
+    //     Message:'You have reached the end-point Salman',          // when u get data from frontend then use this....
+    //     Body:req.body,
+    //     Data:true
+    // })
 // ********** Checking for forntend response **************//
 
 
 // for ( 1st step ) ▶️  u cannot use  filelist because frontend images are in req.filelist multer cannot understand filelist it understand only array
-// so we can convert filelist in array 
+// so we can convert filelist in array........ 
 
 
+const {productName,quantity,price,companyName,color,description,category} = req.body
+
+let imageDetailsArray=[];
+let Size = req.body.size.split(',');
+
+
+req.files.forEach(element => {
+    const { filename,originalname,mimetype }=element; 
+  //  imageDetailsArray.push({filename,originalname,mimetype}) or checking Images Details....  No set the value as productmanagement model.js
+  imageDetailsArray.push({
+    ProductImageUrl:`assets/ProductImages/ ${productName}/${filename}`,
+    ProductImageName :originalname,
+    ProductImageMimeType :mimetype
+  })    
+});
+
+
+// Now Create Product-Schema...
+ 
+const DocToCreate = new ProductModel({
+    productName,
+    quantity,
+    price,
+    companyName,
+    color,
+    size:Size,
+    description,
+    ProductImages:imageDetailsArray,
+    category,
+})
+const DocToSave = await DocToCreate.save();
+ 
+console.log(DocToSave); 
+res.json({
+    Message:`Your Data is saved Successfully`,          // when u get data from frontend then use this....
+    Body:DocToSave,
+    Data:true
+})
 
 } catch (error) {
+    console.log(error);
     res.json({
         Message:error.message,
         Result:null,
@@ -55,6 +97,21 @@ try {
     });
 }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 const GetProductData = async(req,res)=>{
     try {
