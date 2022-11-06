@@ -20,7 +20,7 @@ const ProductSchema = mongoose.Schema({
         ProductImageName: { type: String },
         ProductImageMimeType: { type: String },
     }],
-    category:{type:String,requied:true},
+    category:{type:String,required:true},
     Status :{ type:Number , default:1},
     CreateDate :{
         type:String,
