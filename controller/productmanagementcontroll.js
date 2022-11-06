@@ -115,11 +115,11 @@ res.json({
 
 const GetProductData = async(req,res)=>{
     try {
-        const DoctToGet = await ProductModel.find(
-            {Status:0},//Condition
-            {ProductPrice:1800});//Projection
+           // {Status:0},//Condition
+            // {ProductPrice:1800});//Projection
             //option
-            //get(find() or findOne())
+            //get(find() or findOne()
+        const DoctToGet = await ProductModel.find()
         res.json({
             Message:'Document has found',
             Data:true,
