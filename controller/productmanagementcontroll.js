@@ -65,8 +65,7 @@ req.files.forEach(element => {
     ProductImageMimeType :mimetype
   })    
 });
-
-
+// return for debugging purpose
 // Now Create Product-Schema...
  
 const DocToCreate = new ProductModel({
