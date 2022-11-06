@@ -26,7 +26,8 @@ const ProductSchema = mongoose.Schema({
         type:String,
         default:`${day}-${month}-${year}-${time}`
     }
-})
+    
+},{timestamps:true})
 
 //Export Schema
 module.exports=mongoose.model('ProductCollection',ProductSchema);

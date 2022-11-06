@@ -53,7 +53,8 @@ const {productName,quantity,price,companyName,color,description,category} = req.
 
 let imageDetailsArray=[];
 let Size = req.body.size.split(',');
-
+// Size;
+// return  for debugging purpose go to 4 th option save search push debuger and run js debugger then run npm run dev
 
 req.files.forEach(element => {
     const { filename,originalname,mimetype }=element; 
