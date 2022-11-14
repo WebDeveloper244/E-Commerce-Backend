@@ -98,12 +98,39 @@ res.json({
 }
 }
 
-const GetProductData = async(req,res)=>{
+
+// *************************************************** Get Data With ID for frontend//
+const getDocumentById = async (req,res)=>{                           // stop there ✋✋✋        // frontend get api first create (getDocumentById) and export it through destrcut
+try {
+    const ID = req.params.Id;
+    const docToFind = await  ProductModel.findOne({_id:ID})
+    res.json({
+        Message:"Data Found",
+       Data:true,
+       Result:docToFind
+    })
+} 
+catch (error) {
+    res.json({
+        Message:error.message,
+        Result:null,
+        Data:false
+       })
+}
+
+}
+
+
+
+
+// ***************************************************************************************************************************************api checke-old **********************************************//
+const GetProductData = async (req,res)=>{
     try {
            // {Status:0},//Condition
             // {ProductPrice:1800});//Projection
             //option
             //get(find() or findOne()
+            
         const DoctToGet = await ProductModel.find()
         res.json({
             Message:'Document has found',
@@ -162,6 +189,7 @@ module.exports={
     ProductData,
     GetProductData,
     UpDateProductData,
-    DeleteProductData
+    DeleteProductData,
+    getDocumentById                             // frontend get api
 }
 //3rd Step

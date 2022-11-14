@@ -103,3 +103,9 @@ app.listen(Port,()=>{
 
 // (2nd-step knowldge 1st-arguments) sql create tables and rows 
 // non-sql create collections on the place of table and create object on the place of rows
+
+
+// ****************** Get Data With ID for frontend **********************//
+
+// 1st go to fronted (Product-service) .....
+// 2nd go to controller .......
