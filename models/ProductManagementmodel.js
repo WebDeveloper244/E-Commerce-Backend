@@ -21,6 +21,7 @@ const ProductSchema = mongoose.Schema({
         ProductImageMimeType: { type: String },
     }],
     category:{type:String,required:true},
+    softDelete:{type:Number,default:0},
     Status :{ type:Number , default:1},
     CreateDate :{
         type:String,

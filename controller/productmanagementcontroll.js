@@ -1,5 +1,6 @@
 
 const ProductModel = require('../models/ProductManagementmodel');   
+const fs = require("fs")
 const ProductData = async(req , res)=>{
 try {
 
@@ -99,38 +100,10 @@ res.json({
 }
 
 
-// *************************************************** Get Data With ID for frontend//
-const getDocumentById = async (req,res)=>{                           // stop there ✋✋✋        // frontend get api first create (getDocumentById) and export it through destrcut
-try {
-    const ID = req.params.Id;
-    const docToFind = await  ProductModel.findOne({_id:ID})
-    res.json({
-        Message:"Data Found",
-       Data:true,
-       Result:docToFind
-    })
-} 
-catch (error) {
-    res.json({
-        Message:error.message,
-        Result:null,
-        Data:false
-       })
-}
-
-}
-
-
-
-
-// ***************************************************************************************************************************************api checke-old **********************************************//
+// **************************************************************************************** get All Product  ***********************************************//
 const GetProductData = async (req,res)=>{
     try {
-           // {Status:0},//Condition
-            // {ProductPrice:1800});//Projection
-            //option
-            //get(find() or findOne()
-            
+    
         const DoctToGet = await ProductModel.find()
         res.json({
             Message:'Document has found',
@@ -145,6 +118,126 @@ const GetProductData = async (req,res)=>{
        })
     }
 }
+// *************************************************** Get Data With ID for frontend//
+const getDocumentById = async (req,res)=>{                           // stop there ✋✋✋        // frontend get api first create (getDocumentById) and export it through destrcut
+    try {
+        const ID = req.params.Id;
+        const docToFind = await  ProductModel.findOne({_id:ID})
+        res.json({
+            Message:"Data Found",
+           Data:true,
+           Result:docToFind
+        })
+    } 
+    catch (error) {
+        res.json({
+            Message:error.message,
+            Result:null,
+            Data:false
+           })
+    }
+    
+    }
+
+// **************************************************************************************** Soft Delete Product By ID  ***********************************************//
+
+const DeleteProductById = async(req,res)=>{
+    try {
+        const ID = req.params._id
+      const DocToDelete = await ProductModel.updateOne(
+        {_id:ID},
+        {$set:{softDelete:1}}
+      );
+        res.json({
+            Message:'Document has been Deleted',
+            Data:true,
+            Result:DocToDelete
+        })
+    } catch (error) {
+       res.json({
+        Message:error.message,
+        Result:null,
+        Data:false
+       })
+    }
+}
+// **************************************************************************************** Hard Delete Product By ID  ***********************************************//
+const hardDeleteProductById = async (req,res)=>{
+try {
+    const ID = req.params._id
+    const docToGet = await ProductModel.findOne(
+        {_id:ID}
+    ).lean()
+    
+   if(!!docToGet){
+    const docToDelete = await ProductModel.deleteOne(
+        {_id:docToGet._id}
+    )
+    docToGet.ProductImages.forEach(removeFilePath=>{
+        fs.unlinkSync(`${removeFilePath.ProductImageUrl}`)
+    })
+    fs.rmdirSync(`../assets/ProductImages/${docToGet.productName}`)
+res.json({
+    Message:"Data Delete Successfuly",
+    Result:docToDelete,
+    data:true
+})
+   }else{
+    res.json({
+        Message:"Data Not Deleted",
+        Result:null,
+        data:true
+    })
+   }
+} catch (error) {
+    res.json({
+        Message:error,
+        Result:null,
+        Data:false
+       })
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ***************************************************************************************************************************************api checke-old **********************************************//
+// {Status:0},//Condition
+            // {ProductPrice:1800});//Projection
+            //option
+            //get(find() or findOne()
+
+// const GetProductData = async (req,res)=>{
+//     try {
+           
+            
+//         const DoctToGet = await ProductModel.find()
+//         res.json({
+//             Message:'Document has found',
+//             Data:true,
+//             Result:DoctToGet
+//         })
+//     } catch (error) {
+//        res.json({
+//         Message:error.message,
+//         Result:null,
+//         Data:false
+//        })
+//     }
+// }
 
 const UpDateProductData = async(req,res)=>{
     try {
@@ -165,23 +258,23 @@ const UpDateProductData = async(req,res)=>{
     }
 }
 
-const DeleteProductData = async(req,res)=>{
-    try {
+// const DeleteProductData = async(req,res)=>{
+//     try {
         
-      const DoctToDelete = await ProductModel.deleteMany({Status:0});
-        res.json({
-            Message:'Document has Deleted',
-            Data:true,
-            Result:DoctToDelete
-        })
-    } catch (error) {
-       res.json({
-        Message:error.message,
-        Result:null,
-        Data:false
-       })
-    }
-}
+//       const DoctToDelete = await ProductModel.deleteMany({Status:0});
+//         res.json({
+//             Message:'Document has Deleted',
+//             Data:true,
+//             Result:DoctToDelete
+//         })
+//     } catch (error) {
+//        res.json({
+//         Message:error.message,
+//         Result:null,
+//         Data:false
+//        })
+//     }
+// }
 
 
 
@@ -189,7 +282,8 @@ module.exports={
     ProductData,
     GetProductData,
     UpDateProductData,
-    DeleteProductData,
+    DeleteProductById,      // soft delete
+    hardDeleteProductById,   //hard delete
     getDocumentById                             // frontend get api
 }
 //3rd Step
