@@ -1,6 +1,7 @@
 
 const ProductModel = require('../models/ProductManagementmodel');   
-const fs = require("fs")
+const fs = require("fs");
+const { response } = require('express');
 const ProductData = async(req , res)=>{
 try {
 
@@ -176,7 +177,7 @@ try {
     docToGet.ProductImages.forEach(removeFilePath=>{
         fs.unlinkSync(`${removeFilePath.ProductImageUrl}`)
     })
-    fs.rmdirSync(`../assets/ProductImages/${docToGet.productName}`)
+    fs.rmdirSync(`./assets/ProductImages/${docToGet.productName}`)
 res.json({
     Message:"Data Delete Successfuly",
     Result:docToDelete,
@@ -197,11 +198,72 @@ res.json({
        })
 }
 }
+// **************************************************************************************** UpDate Product By ID  ***********************************************//
+const updateProductById = async (req,res)=>{
+try {
+    const ID = req.body._id;
+    const PayLoad = req.body;
+
+  const docToUpDate = await ProductModel.updateOne(
+    {_id:ID},
+    PayLoad
+  )
+   res.json({
+    Message:`Document has been Updated`,
+    Result: docToUpDate,
+    data:true
+   })
+} catch (error) {
+    res.json({
+        Message:error,
+        Result: null,
+        data:false
+       })
+}
+}
+// **************************************************************************************** get data by company name  ***********************************************//
+const getDataWithCompanyName = async (req,res)=>{
+    try {
+        const CompanyName = req.body.CompanyName
+        const docToFInd = await ProductModel.find(
+            {
+              $match:{companyName:CompanyName}
+            }
+        )
+        res.json({
+            Message:'Data find successfuly',
+            Result:docToFInd,
+            Data:true
+        })
+        
+    } catch (error) {
+        res.json({
+            Message:error,
+            Result:null,
+            Data:false
+        })
+    }
+}
 
 
 
 
 
+
+
+
+
+// **************************************************************************************** UpDate Product Image By ID  ***********************************************//
+const updateProductImageById = async (req,res)=>{
+    try {
+        const {oldProductId,oldImageDetails,newImageDetails} = req.body
+        const docToGet = await ProductModel.findOne(
+            {_id:oldProductId}
+        )
+    } catch (error) {
+        
+    }
+}
 
 
 
@@ -284,6 +346,8 @@ module.exports={
     UpDateProductData,
     DeleteProductById,      // soft delete
     hardDeleteProductById,   //hard delete
-    getDocumentById                             // frontend get api
+    getDocumentById,                             // frontend get api
+    updateProductById,
+    getDataWithCompanyName
 }
 //3rd Step
