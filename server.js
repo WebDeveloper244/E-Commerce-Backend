@@ -36,10 +36,12 @@ app.all('*', (req, res, next) => {
 //Now calling (📱📱) My Routes
 const ProductManagementRouter = require("./route/productmanagementroute");
 const AdminmanagementRouter = require ('./route/AdminmanagementRoute');
+const UsermanagementRouter = require ('./route/userMangementRoute')
 const PaymentManagement = require('./route/PaymentManagementRoute');
 /*******************************Using Routes*************/
 app.use("/ProductManagement",ProductManagementRouter);
 app.use('/AdminmanagementRouter',AdminmanagementRouter);
+app.use('/UsermanagementRouter',UsermanagementRouter)
 app.use('/PaymentManagement',PaymentManagement)
 /*******************************Using Routes*************/
 
