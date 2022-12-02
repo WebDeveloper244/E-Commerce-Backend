@@ -47,7 +47,7 @@ try {
 // ********** Checking for forntend response **************//
 
 
-// for ( 1st step ) ▶️  u cannot use  filelist because frontend images are in req.filelist multer cannot understand filelist it understand only array
+// for ( 1st step ) ▶️ u cannot use  filelist because frontend images are in req.filelist multer cannot understand filelist it understand only array
 // so we can convert filelist in array........ 
 
 

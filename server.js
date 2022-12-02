@@ -1,7 +1,7 @@
 const express = require("express");// Only ImPort Express frameWork 
 const cors = require("cors");
 const app = express();//All the Classes of Express FrameWork in App now you can get any class with (.) bracket is use because its a class
-const Port = process.env.PORT||5050;
+const PORT = process.env.PORT||5050;
 // const path = require('path');
 const ApplicationConfig = require ('./Configration/LoadMyConfig-Env-file')
 
@@ -63,8 +63,8 @@ app.use((error, req, res, next) => {
 });
 //End Block Checking Routes As express not found Url not Founded we need to do it explicitly 
 
-app.listen(Port,()=>{
-    console.log(`Your Server has been launched (🚀🚀🚀🚀) ${Port}`);
+app.listen(PORT,()=>{
+    console.log(`Your Server has been launched (🚀🚀🚀🚀) ${PORT}`);
     
 });
 // yahan tak http//localhost:2400=>(slag) ka matlab hay
