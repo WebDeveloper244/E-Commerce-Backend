@@ -62,8 +62,8 @@ req.files.forEach(element => {
     const { filename,originalname,mimetype }=element; 
   //  imageDetailsArray.push({filename,originalname,mimetype}) or checking Images Details....  No set the value as productmanagement model.js
   imageDetailsArray.push({
-    ProductImageUrl:`assets/ProductImages/${productName}/${filename}`,
-    ProductImageName :originalname,
+      ProductImageUrl:`assets/ProductImages/${productName}/${filename}`,
+      ProductImageName :originalname,
     ProductImageMimeType :mimetype
   })    
 });
