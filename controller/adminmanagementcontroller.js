@@ -34,7 +34,7 @@ const AdminRegister= async(req,res) => {                                        
     }
 }
 
-const AdminLogin = async (req,res) => {
+const AdminLogin = async (req,res) =>{
     try {
         _Email = req.body.Email;
         _Password = req.body.Password;

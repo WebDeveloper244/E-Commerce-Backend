@@ -1,7 +1,6 @@
 
 const ProductModel = require('../models/ProductManagementmodel');   
 const fs = require("fs");
-const { response } = require('express');
 const ProductData = async(req , res)=>{
 try {
 
