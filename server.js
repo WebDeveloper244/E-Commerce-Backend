@@ -37,11 +37,13 @@ const ProductManagementRouter = require("./route/productmanagementroute");
 const AdminmanagementRouter = require ('./route/AdminmanagementRoute');
 const UsermanagementRouter = require ('./route/userMangementRoute')
 const PaymentManagement = require('./route/PaymentManagementRoute');
+const _EmailService =   require('./route/emailManagementRouter');
 /*******************************Using Routes*************/
 app.use("/ProductManagement",ProductManagementRouter);
 app.use('/AdminmanagementRouter',AdminmanagementRouter);
 app.use('/UsermanagementRouter',UsermanagementRouter)
-app.use('/PaymentManagement',PaymentManagement)
+app.use('/PaymentManagement',PaymentManagement);
+app.use('/emailService',_EmailService)
 /*******************************Using Routes*************/
 
 // Set after calling routes because its interpreter language......
