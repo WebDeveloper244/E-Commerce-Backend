@@ -1,9 +1,10 @@
-const { sendEmail } =  require('../missculinius/sendMailManagement');
+const { sendMail } =  require('../missculinius/sendMailManagement');
 
 const sendEmailAgent = async(req, res) => {
     try {
+        // {firstName,email,message} = req.body 
         let payLoad =  req.body;
-        const emailResponse = await sendEmail(payLoad);
+        const emailResponse = await sendMail(payLoad);
         res.json({
             message:emailResponse
         })
