@@ -6,7 +6,8 @@ const sendEmailAgent = async(req, res) => {
         let payLoad =  req.body;
         const emailResponse = await sendMail(payLoad);
         res.json({
-            message:emailResponse
+            body:emailResponse,
+            message:`Email has Send Success-Fully 👍`
         })
     } catch (error) {
         res.json({
