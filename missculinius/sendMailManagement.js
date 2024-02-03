@@ -9,7 +9,7 @@ const sendMail = async(payLoad)=>{
           service: 'gmail',
           auth: {
             user: 'sb2137842@gmail.com', // generated ethereal user
-            pass: 'dlbzjngskacintaf', // generated ethereal password
+            pass: 'cgojmdtdthwtliuo', // generated ethereal password
           },
         });
     
