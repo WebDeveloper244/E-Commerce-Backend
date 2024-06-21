@@ -88,4 +88,5 @@ module.exports={AdminRegister,AdminLogin}
 // kis user ko kiaa access milni chahiyaa (authorization)
 // this is called roll system
 
-// she is very nyce churaail
+// she is very nyce Human
+
